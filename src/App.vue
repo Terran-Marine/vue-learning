@@ -8,14 +8,17 @@
 </template>
 
 <script>
-import MainAppTab from "@/components/MainAppTab";
-
+// import MainAppTab from "@/components/content/MainAppTab";
+import MainAppTab from "@/components/content/MainAppTab";
 
 export default {
   name: 'App',
   components: {
     MainAppTab,
   },
+  created() {
+    console.log('app创建时');
+  }
 }
 
 
@@ -38,24 +41,6 @@ export default {
 
 <style>
 @import "./assets/css/base.css";
-
+@import "~normalize.css";
 
 </style>
-
-
-<!--<div class="tab-bar-item">-->
-<!--<img src="../../assets/img/tabbar/ic_main_home.png" alt="首页">-->
-<!--首页-->
-<!--</div>-->
-<!--<div class="tab-bar-item">-->
-<!--<img src="../../assets/img/tabbar/ic_main_member.png" alt="分类">-->
-<!--分类-->
-<!--</div>-->
-<!--<div class="tab-bar-item">-->
-<!--<img src="../../assets/img/tabbar/ic_main_plan.webp" alt="购物车">-->
-<!--购物车-->
-<!--</div>-->
-<!--<div class="tab-bar-item">-->
-<!--<img src="../../assets/img/tabbar/ic_main_share.png" alt="我的">-->
-<!--我的-->
-<!--</div>-->

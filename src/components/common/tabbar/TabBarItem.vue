@@ -28,7 +28,8 @@ export default {
       return this.$route.path.indexOf(this.skipPath) !== -1
     },
     computedSelectColor(){
-      return this.isActive ? {color:this.selectColor}:{}
+      // return this.isActive ? {color:this.selectColor}:{}
+      return this.$route.path.indexOf(this.skipPath) !== -1 ? {color:this.selectColor}:{}
     }
   },
 
