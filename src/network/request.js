@@ -21,7 +21,7 @@ export function axiosRequest(config) {
 
   instanceAxios.interceptors.response.use(res => {
     console.log(res);
-    return res.data
+    return res.data ? res.data : res
   }, error => {
     console.log(error);
   })

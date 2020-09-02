@@ -10,6 +10,7 @@
 <script>
 // import MainAppTab from "@/components/content/MainAppTab";
 import MainAppTab from "@/components/content/MainAppTab";
+import {initBScroll} from "@/components/content/BScrollIndex";
 
 export default {
   name: 'App',
@@ -18,6 +19,7 @@ export default {
   },
   created() {
     console.log('app创建时');
+    initBScroll();
   }
 }
 

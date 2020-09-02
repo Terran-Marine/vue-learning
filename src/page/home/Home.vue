@@ -4,18 +4,22 @@
     <nav-bar class="home-nav">
       <div slot="center">首页</div>
     </nav-bar>
-    <!--    banner图-->
-    <home-banner :banners="banners"/>
-    <!--    推荐栏-->
-    <home-recommend-view :recommend="recommend"/>
 
-    <home-feature-view/>
+    <gj-scroll class="gj-scroll-wrapper">
+      <!--    banner图-->
+      <home-banner :banners="banners"/>
+      <!--    推荐栏-->
+      <home-recommend-view :recommend="recommend"/>
 
-    <tab-control :title="['流行','新款','精选']" class="home-tab-control" @tabClick="tabClick"/>
+      <home-feature-view/>
 
-    <goods-list-view :goods="showGoods">
+      <tab-control :title="['流行','新款','精选']" class="home-tab-control" @tabClick="tabClick"/>
 
-    </goods-list-view>
+      <goods-list-view :goods="showGoods">
+
+      </goods-list-view>
+    </gj-scroll>
+
 
   </div>
 </template>
@@ -28,7 +32,7 @@ import HomeFeatureView from "@/page/home/HomeFeatureView";
 
 import TabControl from "@/components/content/TabControl";
 import GoodsListView from "@/components/content/GoodsListView";
-
+import GjScroll from "@/components/content/GjScroll";
 import {getHttpHomeMultiData, getHttpGoodsData} from "@/network/home";
 
 export default {
@@ -43,12 +47,12 @@ export default {
         'pop': {page: 0, list: []},
         'new': {page: 0, list: []},
         'sell': {page: 0, list: []},
-      }
+      },
     };
   },
   computed: {
     showGoods() {
-      return this.goods[this.currentType].list
+      return this.goods[this.currentType].list;
     },
   },
   components: {
@@ -58,6 +62,7 @@ export default {
     HomeRecommendView,
     HomeFeatureView,
     TabControl,
+    GjScroll,
   },
   methods: {
     getHomeMultiData() {
@@ -70,10 +75,10 @@ export default {
       });
     },
 
-    getGoodsData(type) {
-      const page = this.goods[type].page + 1
-      getHttpGoodsData(type, page).then(res => {
-        this.goods[type].list.push(...res.list);
+    getGoodsData(productType) {
+      const page = this.goods[productType].page + 1
+      getHttpGoodsData(productType, page).then(res => {
+        this.goods[productType].list.push(...res.list);
       }).catch(err => {
         console.log(err);
       });
@@ -95,7 +100,7 @@ export default {
           break
       }
       console.log(this.currentType);
-      console.log(this.goods);
+
     }
 
   },
@@ -105,6 +110,17 @@ export default {
     this.getGoodsData('new');
     this.getGoodsData('sell');
   },
+  mounted() {
+    // this.bsScroll = new BScroll('.wrapper', {
+    //   scrollbar: true,
+    //   pullUpLoad: true,
+    // });
+    //
+    // this.bsScroll.on('pullingUp', () => {
+    //   console.log('加载更多');
+    //   this.bsScroll.finishPullUp()
+    // });
+  }
 }
 
 </script>
@@ -119,6 +135,12 @@ export default {
   position: sticky;
   top: 0;
   background-color: white;
+}
+
+
+.gj-scroll-wrapper {
+  height: 100%;
+  overflow: hidden;
 }
 
 </style>
