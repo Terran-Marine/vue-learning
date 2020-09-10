@@ -344,6 +344,8 @@ export default {
       this.bsScroll.finishPullUp()
     })
 
+    console.log(this.bsScroll);
+
     // this.bsScroll.on('scroll', (position) => {
     //   console.log(position);
     // });

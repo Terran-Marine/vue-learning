@@ -3,8 +3,6 @@
     <div class="gj-scroll-context">
       <slot/>
     </div>
-
-
   </div>
 </template>
 
@@ -18,17 +16,23 @@ export default {
     return {bscroll: null,};
   },
   mounted() {
-    this.bscroll = new BScroll(this.$refs.gjscrollwrapper, {});
+    this.$nextTick(() => {
+      this.bscroll = new BScroll(this.$refs.gjscrollwrapper, {
+        click: true
+      });
+      console.log(this.bscroll);
+    });
+
   }
 }
 </script>
 
 <style scoped>
-.gj-scroll-wrapper{
+.gj-scroll-wrapper {
   width: 100%;
   overflow: hidden;
-  /*position: absolute;*/
-  /*top: 0;*/
+  position: absolute;
+  height: 100%;
   /*bottom: 0;*/
 }
 

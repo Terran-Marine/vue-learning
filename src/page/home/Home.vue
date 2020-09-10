@@ -1,11 +1,13 @@
 <template>
-  <div>
+  <div id="home">
     <!--    标题栏-->
     <nav-bar class="home-nav">
-      <div slot="center">首页</div>
+      <div slot="center">购物街</div>
     </nav-bar>
 
-    <gj-scroll class="gj-scroll-wrapper">
+
+    <gj-scroll class="wrapper">
+
       <!--    banner图-->
       <home-banner :banners="banners"/>
       <!--    推荐栏-->
@@ -126,6 +128,10 @@ export default {
 </script>
 
 <style scoped>
+#home {
+  height: 100vh;
+}
+
 .home-nav {
   background-color: var(--color-tint);
   color: var(--color-background);
@@ -138,8 +144,9 @@ export default {
 }
 
 
-.gj-scroll-wrapper {
-  height: 100%;
+.wrapper {
+  margin-top: 44px;
+  height: calc(100% - 93px);
   overflow: hidden;
 }
 
